@@ -1,10 +1,9 @@
 {
   "hubDomains": [
-    "links.example.com"
+    "thenewscasts.com"
   ],
   "downloadDomains": [
-    "downloads.example.com",
-    "cdn.example.com"
+    "megaup.net"
   ],
   "sourceHome": "https://game3rb.com/"
 }
