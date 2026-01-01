@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>game3rb • CLI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="terminal">
+    <header class="topbar">
+      <div class="dots">
+        <span class="dot r"></span>
+        <span class="dot y"></span>
+        <span class="dot g"></span>
+      </div>
+      <div class="title">game3rb@local:~$</div>
+      <div class="right">dark · cli</div>
+    </header>
+
+    <section class="pane">
+      <div class="line">
+        <span class="prompt">➜</span>
+        <span class="path">/home/user</span>
+        <span class="cmd"> fetch games</span>
+      </div>
+
+      <div id="status" class="status">Lade …</div>
+      <ol id="list" class="list" hidden></ol>
+
+      <footer class="hint">
+        Klick auf einen Titel öffnet die Seite in einem neuen Tab.
+      </footer>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
