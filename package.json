@@ -1,5 +1,5 @@
 {
-  "name": "game3rb-cli",
+  "name": "cli-lite",
   "type": "module",
   "private": true,
   "scripts": {

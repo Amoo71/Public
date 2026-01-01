@@ -1,0 +1,10 @@
+{
+  "hubDomains": [
+    "links.example.com"
+  ],
+  "downloadDomains": [
+    "downloads.example.com",
+    "cdn.example.com"
+  ],
+  "sourceHome": "https://game3rb.com/"
+}
