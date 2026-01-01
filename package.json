@@ -1,0 +1,13 @@
+{
+  "name": "game3rb-cli",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "express": "^4.19.2"
+  }
+}
