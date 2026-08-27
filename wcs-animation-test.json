@@ -1,0 +1,111 @@
+{
+  "name": "WCS Motion Test",
+  "description": "Baseline layout for a clock-style motion experiment in Widget Construction Set.",
+  "version": 1,
+  "default_layout": "motion_small",
+  "thumbnail_layout": "motion_small",
+  "layout_display_order": ["motion_small"],
+  "content_last_modified": "2026-08-27T18:30:00Z",
+  "data": {
+    "content_url": "https://wcs.bjmalicoat.com/",
+    "motion_start": "2026-08-27T20:30:00+02:00",
+    "motion_duration_seconds": 60
+  },
+  "layouts": {
+    "motion_small": {
+      "size": "small",
+      "styles": {
+        "colors": {
+          "background": {
+            "color": "#0B0B0F"
+          },
+          "track": {
+            "color": "#2B2B33"
+          },
+          "accent": {
+            "color": "#FFFFFF"
+          },
+          "muted": {
+            "color": "#8E8E93"
+          }
+        }
+      },
+      "layers": [
+        {
+          "rows": [
+            {
+              "height": 12,
+              "cells": [
+                {
+                  "width": 12,
+                  "background_color_style": "background"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "rows": [
+            {
+              "height": 3,
+              "cells": [
+                {
+                  "width": 12,
+                  "text": {
+                    "string": "60s MOTION TEST",
+                    "size": 13,
+                    "color_style": "accent",
+                    "weight": "bold",
+                    "justification": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "height": 5,
+              "cells": [
+                {
+                  "width": 2,
+                  "text": {
+                    "string": "●",
+                    "size": 28,
+                    "color_style": "accent",
+                    "weight": "bold",
+                    "justification": "center"
+                  }
+                },
+                {
+                  "width": 10,
+                  "background_color_style": "track",
+                  "text": {
+                    "string": "────────",
+                    "size": 16,
+                    "color_style": "muted",
+                    "weight": "medium",
+                    "justification": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "height": 4,
+              "cells": [
+                {
+                  "width": 12,
+                  "text": {
+                    "string": "clock-style proof of concept",
+                    "size": 11,
+                    "color_style": "muted",
+                    "weight": "medium",
+                    "justification": "center",
+                    "min_scale_factor": 0.7
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
