@@ -5,29 +5,21 @@
   "default_layout": "motion_small",
   "thumbnail_layout": "motion_small",
   "layout_display_order": ["motion_small"],
-  "content_last_modified": "2026-08-27T18:30:00Z",
+  "content_last_modified": "2026-08-28T07:10:00Z",
   "data": {
     "content_url": "https://wcs.bjmalicoat.com/",
-    "motion_start": "2026-08-27T20:30:00+02:00",
-    "motion_duration_seconds": 60
+    "motion_start": "2026-08-28T09:10:00+02:00",
+    "motion_duration_seconds": "60"
   },
   "layouts": {
     "motion_small": {
       "size": "small",
       "styles": {
         "colors": {
-          "background": {
-            "color": "#0B0B0F"
-          },
-          "track": {
-            "color": "#2B2B33"
-          },
-          "accent": {
-            "color": "#FFFFFF"
-          },
-          "muted": {
-            "color": "#8E8E93"
-          }
+          "background": { "color": "#0B0B0F" },
+          "track": { "color": "#2B2B33" },
+          "accent": { "color": "#FFFFFF" },
+          "muted": { "color": "#8E8E93" }
         }
       },
       "layers": [
