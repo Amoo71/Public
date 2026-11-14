@@ -4,6 +4,8 @@
 
 #include <algorithm>
 #include <cstdlib>
+#include <clocale>
+#include <cwctype>
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -106,7 +108,7 @@ static void list_dir(const fs::path& path) {
         }
         std::wcout << name << L"\n";
     }
-    if (ec) std::wcerr << L"dir: " << ec.message().c_str() << L"\n";
+    if (ec) std::wcerr << L"dir: " << ec.value() << L"\n";
     std::wcout << L"\n";
 }
 
@@ -123,26 +125,26 @@ static bool run_builtin(const std::wstring& line, bool& should_exit) {
         if (args.size() == 1) std::wcout << fs::current_path(ec).wstring() << L"\n";
         else {
             fs::current_path(fs::path(args[1]), ec);
-            if (ec) std::wcerr << L"cd: " << ec.message().c_str() << L"\n";
+            if (ec) std::wcerr << L"cd: " << ec.value() << L"\n";
         }
     } else if (cmd == L"dir" || cmd == L"ls") {
         list_dir(args.size() > 1 ? fs::path(args[1]) : fs::current_path());
     } else if (cmd == L"mkdir") {
         if (args.size() < 2) std::wcerr << L"usage: mkdir <path>\n";
         else if (!fs::create_directories(args[1], ec) && ec)
-            std::wcerr << L"mkdir: " << ec.message().c_str() << L"\n";
+            std::wcerr << L"mkdir: " << ec.value() << L"\n";
     } else if (cmd == L"rmdir") {
         if (args.size() < 2) std::wcerr << L"usage: rmdir <path>\n";
         else if (!fs::remove(args[1], ec) || ec)
-            std::wcerr << L"rmdir: " << (ec ? ec.message().c_str() : "directory not empty") << L"\n";
+            std::wcerr << L"rmdir failed (error " << ec.value() << L")\n";
     } else if (cmd == L"del" || cmd == L"rm") {
         if (args.size() < 2) std::wcerr << L"usage: del <file>\n";
         else if (!fs::remove(args[1], ec) || ec)
-            std::wcerr << L"del: " << (ec ? ec.message().c_str() : "file not found") << L"\n";
+            std::wcerr << L"del failed (error " << ec.value() << L")\n";
     } else if (cmd == L"copy" || cmd == L"cp") {
         if (args.size() < 3) std::wcerr << L"usage: copy <source> <destination>\n";
         else if (!fs::copy_file(args[1], args[2], fs::copy_options::overwrite_existing, ec) || ec)
-            std::wcerr << L"copy: " << ec.message().c_str() << L"\n";
+            std::wcerr << L"copy: " << ec.value() << L"\n";
     } else if (cmd == L"type" || cmd == L"cat") {
         if (args.size() < 2) std::wcerr << L"usage: type <file>\n";
         else {
@@ -187,7 +189,7 @@ int main() {
     if (const wchar_t* root = _wgetenv(L"PORTSHELL_ROOT"); root && *root) {
         std::error_code ec;
         fs::current_path(root, ec);
-        if (ec) std::wcerr << L"PORTSHELL_ROOT unavailable: " << ec.message().c_str() << L"\n";
+        if (ec) std::wcerr << L"PORTSHELL_ROOT unavailable: " << ec.value() << L"\n";
     }
 
     std::wcout << L"PortShell 0.1 | PlayPort terminal prototype\n"
