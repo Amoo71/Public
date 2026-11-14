@@ -1,0 +1,39 @@
+name: PortShell Windows build
+
+on:
+  push:
+    paths:
+      - "PlayPortTerminal/**"
+      - ".github/workflows/portshell-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S PlayPortTerminal -B PlayPortTerminal/build -A x64
+
+      - name: Build
+        run: cmake --build PlayPortTerminal/build --config Release
+
+      - name: Verify executable
+        shell: pwsh
+        run: |
+          $exe = "PlayPortTerminal/build/Release/PortShell.exe"
+          if (!(Test-Path $exe)) { throw "PortShell.exe was not produced" }
+          Get-Item $exe | Format-List FullName,Length
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: PortShell-Windows-x64
+          path: PlayPortTerminal/build/Release/PortShell.exe
+          if-no-files-found: error
+          retention-days: 30
