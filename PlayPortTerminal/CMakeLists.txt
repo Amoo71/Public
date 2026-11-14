@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.20)
+project(PortShell VERSION 0.1.0 LANGUAGES CXX)
+
+if(NOT WIN32)
+  message(FATAL_ERROR "PortShell is a Windows executable. Build it with a Windows toolchain.")
+endif()
+
+add_executable(PortShell src/main.cpp)
+target_compile_features(PortShell PRIVATE cxx_std_20)
+target_compile_definitions(PortShell PRIVATE UNICODE _UNICODE NOMINMAX WIN32_LEAN_AND_MEAN)
+if(MSVC)
+  target_compile_options(PortShell PRIVATE /W4 /permissive- /EHsc)
+else()
+  target_compile_options(PortShell PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+set_target_properties(PortShell PROPERTIES OUTPUT_NAME "PortShell")
